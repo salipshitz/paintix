@@ -16,3 +16,7 @@ An ASCII/Terminal based paint program
 * <kbd>R</kbd>: removes a pixel
 * <kbd>T</kbd>: quits paintix
 * <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>: moves the cursor
+
+# Example Art
+
+[![Deepin_Screenshot_select-area_20180802163735.png](https://s15.postimg.cc/v4ro25m8r/Deepin_Screenshot_select-area_20180802163735.png)](https://postimg.cc/image/5yqpvbkyf/)
