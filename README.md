@@ -3,7 +3,7 @@ An ASCII/Terminal based paint program
 
 # Controls
 
-<kbd>`</kbd> <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> <kbd>5</kbd> <kbd>6</kbd> 
+<kbd>`</kbd> <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> <kbd>5</kbd> <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> <kbd>9</kbd> <kbd>0</kbd> <kbd>-</kbd>
 
 <kbd>Q</kbd> <kbd>W</kbd> <kbd>R</kbd> <kbd>T</kbd>
 
@@ -12,6 +12,8 @@ An ASCII/Terminal based paint program
 
 * <kbd>`</kbd>: reverts to default color
 * <kbd>1</kbd>-<kbd>6</kbd>: changes colors
+* <kbd>7</kbd>-<kbd>0</kbd>: changes ASCII character
+* <kbd>-</kbd>: reverts back to default character
 * <kbd>Q</kbd>: places a pixel
 * <kbd>R</kbd>: removes a pixel
 * <kbd>T</kbd>: quits paintix
