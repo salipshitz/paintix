@@ -2,8 +2,11 @@
 
 clear
 
+spix="█"
+
 while true
 do
+	pixel=$spix
 	read -s -n1 ui
 	if [ "$ui" == "w" ]
 	then
@@ -22,7 +25,7 @@ do
 		clear
 	elif [ "$ui" == "q" ]
 	then
-		echo -en "█"
+		echo -en "$pixel"
 	elif [ "$ui" == "1" ]
 	then
 		tput sgr0
@@ -55,7 +58,22 @@ do
 		tput sgr0
 	elif [ "$ui" == "t" ]
 	then
+		tput sgr0
 		exit
-	fi	
-	
+	elif [ "$ui" == "-" ]
+	then
+		spix="█"
+	elif [ "$ui" == "0" ]
+	then
+		spix="*"
+	elif [ "$ui" == "9" ]
+	then
+		spix="."
+	elif [ "$ui" == "8" ]
+	then
+		spix="|"
+	elif [ "$ui" == "7" ]
+	then
+		spix="_"
+	fi
 done
