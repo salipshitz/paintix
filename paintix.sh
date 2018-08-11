@@ -6,6 +6,16 @@ fname=tempx
 
 touch $fname
 
+cc="█"
+sym="█"
+
+echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
+echo -e "$cc $sym\n"
+echo -e " " >> $fname
+echo -e " " >> $fname
+echo -e " " >> $fname
+tput cup 3 0
+
 spix="█"
 
 while true
@@ -31,7 +41,14 @@ do
 	elif [ "$ui" == "c" ]
 	then
 		clear
-		clear > $fname
+		clear >> $fname
+
+		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
+		echo -e "$cc $sym\n"
+		echo -e " " >> $fname
+		echo -e " " >> $fname
+		echo -e " " >> $fname
+		tput cup 3 0
 	elif [ "$ui" == "q" ]
 	then
 		echo -en "$pixel"
@@ -46,9 +63,17 @@ do
 		echo -en "File Name: "		
 		read pfile
 		clear
-		clear > $fname
+		clear >> $fname
 		cat $pfile
 		cat $pfile > $fname
+		tput cup 0 0
+		tput cup 0 0 >> $fname
+		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
+		echo -e "$cc $sym\n"
+		echo -e " " >> $fname
+		echo -e " " >> $fname
+		echo -e " " >> $fname
+		tput cup 3 0
 	elif [ "$ui" == "v" ]
 	then			
 		if [ -f tempx ]
@@ -98,21 +123,41 @@ do
 		tput sgr0
 		tput setaf 1
 		tput setaf 1 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[31m█\e[0m"
+		cc="\e[31m█\e[0m"
+		tput rc
 	elif [ "$ui" == "2" ]
 	then
 		tput sgr0
 		tput setaf 2
 		tput setaf 2 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[32m█\e[0m"
+		cc="\e[32m█\e[0m"
+		tput rc
 	elif [ "$ui" == "3" ]
 	then
 		tput sgr0
 		tput setaf 3
 		tput setaf 3 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[33m█\e[0m"
+		cc="\e[33m█\e[0m"
+		tput rc
 	elif [ "$ui" == "4" ]
 	then
 		tput sgr0
 		tput setaf 4
 		tput setaf 4 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[34m█\e[0m"
+		cc="\e[34m█\e[0m"
+		tput rc
 	elif [ "$ui" == "5" ]
 	then
 		tput sgr0
@@ -123,6 +168,11 @@ do
 		tput sgr0
 		tput setaf 6
 		tput setaf 6 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[36m█\e[0m"
+		cc="\e[36m█\e[0m"
+		tput rc
 	elif [ "$ui" == "r" ]
 	then
 		echo -en " "
@@ -131,6 +181,11 @@ do
 	then
 		tput sgr0
 		tput sgr0 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[0m█\e[0m"
+		cc="\e[0m█\e[0m"
+		tput rc
 	elif [ "$ui" == "t" ]
 	then
 		tput sgr0
@@ -146,17 +201,42 @@ do
 	elif [ "$ui" == "-" ]
 	then
 		spix="█"
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m█\e[0m"
+		sym="\e[0m█\e[0m"
+		tput rc
 	elif [ "$ui" == "0" ]
 	then
 		spix="*"
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m*\e[0m"
+		sym="\e[0m*\e[0m"
+		tput rc
 	elif [ "$ui" == "9" ]
 	then
 		spix="."
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m.\e[0m"
+		sym="\e[0m.\e[0m"
+		tput rc
 	elif [ "$ui" == "8" ]
 	then
 		spix="|"
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m|\e[0m"
+		sym="\e[0m|\e[0m"
+		tput rc
 	elif [ "$ui" == "7" ]
 	then
 		spix="_"
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m_\e[0m"
+		sym="\e[0m_\e[0m"
+		tput rc
 	fi
 done
