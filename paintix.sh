@@ -4,7 +4,7 @@ clear
 
 fname="tempx"
 
-exec > >(tee -ia $fname)
+exec > >(tee -ai $fname)
 
 spix="█"
 
@@ -37,12 +37,13 @@ do
 		clear
 		cat $pfile
 	elif [ "$ui" == "v" ]
-	then	
+	then			
 		echo -en "\e[0m"		
 		read psfile
 		printf "\033[1A"
 		echo -en "\r\033[2K"
 		mv tempx $psfile
+		exit
 	elif [ "$ui" == "1" ]
 	then
 		tput sgr0
