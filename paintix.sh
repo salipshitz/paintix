@@ -32,13 +32,13 @@ do
 		echo -en "$pixel"
 	elif [ "$ui" == "o" ]
 	then
-		echo -e "\e[0m"		
+		echo -en "\e[0m"		
 		read pfile
 		clear
 		cat $pfile
 	elif [ "$ui" == "v" ]
 	then	
-		echo -e "\e[0m"		
+		echo -en "\e[0m"		
 		read psfile
 		printf "\033[1A"
 		echo -en "\r\033[2K"
