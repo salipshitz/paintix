@@ -74,6 +74,8 @@ do
 		echo -e " " >> $fname
 		echo -e " " >> $fname
 		tput cup 3 0
+		tput cup 3 0 >> $fname
+		echo -en "\033[1B" >> $fname
 	elif [ "$ui" == "v" ]
 	then			
 		if [ -f tempx ]
