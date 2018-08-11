@@ -163,6 +163,11 @@ do
 		tput sgr0
 		tput setaf 5
 		tput setaf 5 >> $fname
+		tput sc
+		tput cup 1 0
+		echo -en "\e[35m█\e[0m"
+		cc="\e[35m█\e[0m"
+		tput rc
 	elif [ "$ui" == "6" ]
 	then
 		tput sgr0
