@@ -9,6 +9,8 @@ An ASCII/Terminal based paint program
 
 <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
 
+<kbd>V</kbd> <kbd>O</kbd>
+
 
 * <kbd>`</kbd>: reverts to default color
 * <kbd>1</kbd>-<kbd>6</kbd>: changes colors
@@ -18,6 +20,8 @@ An ASCII/Terminal based paint program
 * <kbd>R</kbd>: removes a pixel
 * <kbd>T</kbd>: quits paintix
 * <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>: moves the cursor
+* <kbd>V</kbd>: allows you to type a file name to save your work to
+* <kbd>O</kbd>: allows you to type a file name to open an exitsing file (.pntx)
 
 # Example Art
 
