@@ -24,19 +24,19 @@ while true
 do
 	pixel=$spix
 	read -s -n1 ui
-	if [ "$ui" == "w" ]
+	if [ "$ui" == "w" ] || [ "$ui" == "i" ]
 	then
 		printf "\033[1A"
 		echo -en "\033[1A" >> $fname
-	elif [ "$ui" == "s" ]
+	elif [ "$ui" == "s" ] || [ "$ui" == "k" ]
 	then
 		printf "\033[1B"
 		echo -en "\033[1B" >> $fname
-	elif [ "$ui" == "a" ]
+	elif [ "$ui" == "a" ] || [ "$ui" == "j" ]
 	then
 		printf "\033[1D"
 		echo -en "\033[1D" >> $fname
-	elif [ "$ui" == "d" ]
+	elif [ "$ui" == "d" ] || [ "$ui" == "l" ]
 	then
 		printf "\033[1C"
 		echo -en "\033[1C" >> $fname
@@ -70,8 +70,8 @@ do
 		cat $pfile > $fname
 		tput cup 0 0
 		tput cup 0 0 >> $fname
-		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
-		echo -e "$cc $sym\n"
+		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
+		echo -e "[$cc] [$sym]\n"
 		echo -e " " >> $fname
 		echo -e " " >> $fname
 		tput cup 3 0
