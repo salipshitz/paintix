@@ -11,7 +11,7 @@ clear > $fname
 cc="█"
 sym="█"
 
-echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
+echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
 echo -e "[$cc] [$sym]\n"
 echo -e " " >> $fname
 echo -e " " >> $fname
