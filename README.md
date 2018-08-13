@@ -18,4 +18,4 @@ An ASCII/Terminal based paint program
 
 # Example Art
 
-[![Deepin_Screenshot_select-area_20180802163735.png](https://s15.postimg.cc/v4ro25m8r/Deepin_Screenshot_select-area_20180802163735.png)](https://postimg.cc/image/5yqpvbkyf/)
+[![Deepin_Screenshot_select-area_20180812210250.png](https://s33.postimg.cc/9920v7ku7/Deepin_Screenshot_select-area_20180812210250.png)](https://postimg.cc/image/4aeigoh17/)
