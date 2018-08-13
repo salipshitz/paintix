@@ -40,17 +40,6 @@ do
 	then
 		printf "\033[1C"
 		echo -en "\033[1C" >> $fname
-	elif [ "$ui" == "c" ]
-	then
-		clear
-		clear >> $fname
-
-		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT\e[0m"
-		echo -e "$cc $sym\n"
-		echo -e " " >> $fname
-		echo -e " " >> $fname
-		echo -e " " >> $fname
-		tput cup 3 0
 	elif [ "$ui" == "q" ]
 	then
 		echo -en "$pixel"
@@ -70,7 +59,7 @@ do
 		cat $pfile > $fname
 		tput cup 0 0
 		tput cup 0 0 >> $fname
-		echo -e "\e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
+		echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
 		echo -e "[$cc] [$sym]\n"
 		echo -e " " >> $fname
 		echo -e " " >> $fname
