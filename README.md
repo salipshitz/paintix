@@ -3,15 +3,6 @@ An ASCII/Terminal based paint program
 
 # Controls
 
-<kbd>`</kbd> <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> <kbd>5</kbd> <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> <kbd>9</kbd> <kbd>0</kbd> <kbd>-</kbd>
-
-<kbd>Q</kbd> <kbd>W</kbd> <kbd>R</kbd> <kbd>T</kbd>
-
-<kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
-
-<kbd>V</kbd> <kbd>O</kbd>
-
-
 * <kbd>`</kbd>: reverts to default color
 * <kbd>1</kbd>-<kbd>6</kbd>: changes colors
 * <kbd>7</kbd>-<kbd>0</kbd>: changes ASCII character
@@ -22,6 +13,8 @@ An ASCII/Terminal based paint program
 * <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>: moves the cursor
 * <kbd>V</kbd>: allows you to type a file name to save your work to
 * <kbd>O</kbd>: allows you to type a file name to open an exitsing file (.pntx)
+* <kbd>B</kbd>: change brush
+* <kbd>N</kbd>: change color 0-256
 
 # Example Art
 
