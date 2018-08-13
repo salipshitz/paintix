@@ -6,6 +6,8 @@ fname=tempx
 
 touch $fname
 
+clear > $fname
+
 cc="█"
 sym="█"
 
@@ -72,10 +74,8 @@ do
 		echo -e "$cc $sym\n"
 		echo -e " " >> $fname
 		echo -e " " >> $fname
-		echo -e " " >> $fname
 		tput cup 3 0
 		tput cup 3 0 >> $fname
-		echo -en "\033[1B" >> $fname
 	elif [ "$ui" == "v" ]
 	then			
 		if [ -f tempx ]
@@ -120,6 +120,27 @@ do
 				cfile=$psfile
 			fi
 		fi
+	elif [ "$ui" == "b" ]
+	then
+		tput sc
+		tput sc >> $fname
+		linesx=$(tput lines)
+		lines="$((linesx - 2))"
+		tput cup $lines 0		
+		tput cup $lines 0 >> $fname
+		echo -en "\e[0m"
+		echo -en "Brush: "			
+		read brush
+		spix=$brush
+		printf "\033[1A"
+		printf "\033[2K"
+		tput rc
+		tput rc >> $fname
+		tput sc
+		tput cup 1 2
+		echo -en "\e[0m$brush\e[0m"
+		sym="\e[0m$brush\e[0m"
+		tput rc
 	elif [ "$ui" == "1" ]
 	then
 		tput sgr0
