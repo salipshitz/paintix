@@ -248,35 +248,35 @@ do
 		tput rc
 	elif [ "$ui" == "0" ]
 	then
-		spix="*"
+		spix="░"
 		tput sc
 		tput cup 1 5
-		echo -en "\e[0m*\e[0m"
-		sym="\e[0m*\e[0m"
+		echo -en "\e[0m░\e[0m"
+		sym="\e[0m░\e[0m"
 		tput rc
 	elif [ "$ui" == "9" ]
 	then
-		spix="."
+		spix="▚"
 		tput sc
 		tput cup 1 5
-		echo -en "\e[0m.\e[0m"
-		sym="\e[0m.\e[0m"
+		echo -en "\e[0m▚\e[0m"
+		sym="\e[0m▚\e[0m"
 		tput rc
 	elif [ "$ui" == "8" ]
 	then
-		spix="|"
+		spix="▞"
 		tput sc
 		tput cup 1 5
-		echo -en "\e[0m|\e[0m"
-		sym="\e[0m|\e[0m"
+		echo -en "\e[0m▞\e[0m"
+		sym="\e[0m▞\e[0m"
 		tput rc
 	elif [ "$ui" == "7" ]
 	then
-		spix="_"
+		spix="┃"
 		tput sc
 		tput cup 1 5
-		echo -en "\e[0m_\e[0m"
-		sym="\e[0m_\e[0m"
+		echo -en "\e[0m┃\e[0m"
+		sym="\e[0m┃\e[0m"
 		tput rc
 	fi
 done
