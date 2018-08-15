@@ -4,9 +4,8 @@ An ASCII/Terminal based paint program
 # Controls
 
 * <kbd>`</kbd>: reverts to default color
-* <kbd>1</kbd>-<kbd>7</kbd>: changes colors
-* <kbd>8</kbd>-<kbd>0</kbd>: changes ASCII character
-* <kbd>-</kbd>: reverts back to default character
+* <kbd>1</kbd>-<kbd>6</kbd>: changes colors
+* <kbd>7</kbd>-<kbd>=</kbd>: changes ASCII character
 * <kbd>Q</kbd>: places a pixel
 * <kbd>R</kbd>: removes a pixel
 * <kbd>T</kbd>: quits paintix
