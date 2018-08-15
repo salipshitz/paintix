@@ -272,13 +272,19 @@ do
 		tput rc
 	elif [ "$ui" == "7" ]
 	then
-		tput sgr0
-		tput setaf 6
-		tput setaf 6 >> $fname
+		spix="│"
 		tput sc
-		tput cup 1 1
-		echo -en "\e[90m█\e[0m"
-		cc="\e[90m█\e[0m"
+		tput cup 1 5
+		echo -en "\e[0m│\e[0m"
+		sym="\e[0m│\e[0m"
+		tput rc
+	elif [ "$ui" == "=" ]
+	then
+		spix="─"
+		tput sc
+		tput cup 1 5
+		echo -en "\e[0m─\e[0m"
+		sym="\e[0m─\e[0m"
 		tput rc
 	fi
 done
