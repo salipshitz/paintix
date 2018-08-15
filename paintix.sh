@@ -376,21 +376,13 @@ do
 		exit
 	elif [ "$ui" == "-" ]
 	then
-		spix="█"
-		tput sc
-		tput cup 1 5
-		echo -en "\e[0m█\e[0m"
-		sym="\e[0m█\e[0m"
-		tput rc
-	elif [ "$ui" == "0" ]
-	then
 		spix="░"
 		tput sc
 		tput cup 1 5
 		echo -en "\e[0m░\e[0m"
 		sym="\e[0m░\e[0m"
 		tput rc
-	elif [ "$ui" == "9" ]
+	elif [ "$ui" == "0" ]
 	then
 		spix="╱"
 		tput sc
@@ -398,13 +390,21 @@ do
 		echo -en "\e[0m╱\e[0m"
 		sym="\e[0m╱\e[0m"
 		tput rc
-	elif [ "$ui" == "8" ]
+	elif [ "$ui" == "9" ]
 	then
 		spix="╲"
 		tput sc
 		tput cup 1 5
 		echo -en "\e[0m╲\e[0m"
 		sym="\e[0m╲\e[0m"
+		tput rc
+	elif [ "$ui" == "8" ]
+	then
+		spix="─"
+		tput sc
+		tput cup 1 5
+		echo -en "\e[0m─\e[0m"
+		sym="\e[0m─\e[0m"
 		tput rc
 	elif [ "$ui" == "7" ]
 	then
@@ -416,11 +416,11 @@ do
 		tput rc
 	elif [ "$ui" == "=" ]
 	then
-		spix="─"
+		spix="█"
 		tput sc
 		tput cup 1 5
-		echo -en "\e[0m─\e[0m"
-		sym="\e[0m─\e[0m"
+		echo -en "\e[0m█\e[0m"
+		sym="\e[0m█\e[0m"
 		tput rc
 	fi
 done
