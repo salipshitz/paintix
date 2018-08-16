@@ -29,7 +29,7 @@ tput rc >> $fname
 cc="█"
 sym="█"
 
-echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
+echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [X] QUIT | [B] BRUSH | [N] COLOR\e[0m"
 echo -e "[$cc] [$sym]\n"
 echo -e " " >> $fname
 echo -e " " >> $fname
@@ -77,7 +77,7 @@ do
 		cat $pfile > $fname
 		tput cup 0 0
 		tput cup 0 0 >> $fname
-		echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [T] QUIT | [B] BRUSH | [N] COLOR\e[0m"
+		echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [X] QUIT | [B] BRUSH | [N] COLOR\e[0m"
 		echo -e "[$cc] [$sym]\n"
 		echo -e " " >> $fname
 		echo -e " " >> $fname
@@ -373,7 +373,7 @@ do
 		tput rc
 		tput rc >> $fname
 		col="\e[0m0\e[0m"
-	elif [ "$ui" == "t" ]
+	elif [ "$ui" == "x" ]
 	then
 		tput sgr0
 		tput sgr0 >> $fname
