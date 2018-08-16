@@ -2,7 +2,6 @@
 
 # paintix is free software and thus has no warranty
 # Feel free to share and modify!
-
 clear
 
 fname=tempx
@@ -21,19 +20,20 @@ cols=$((colsx - 10))
 lines="$((linesx - 2))"
 tput cup $lines $cols
 tput cup $lines $cols >> $fname
-echo -en "\e[0mColor: $col"
+printf "\e[0mColor: $col"
 tput rc
 tput rc >> $fname
 
 
 cc="█"
-sym="█"
 
-echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [X] QUIT | [B] BRUSH | [N] COLOR\e[0m"
-echo -e "[$cc] [$sym]\n"
-echo -e " " >> $fname
-echo -e " " >> $fname
-echo -e " " >> $fname
+msg="\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [SPACE] DRAW | [X] DELETE | [Z] CLEAR | [O] OPEN | [I] SAVE | [Q] QUIT | [~123456] PRESET COLOR | [C] MANUAL COLOR | [7890-+] PRESET BRUSH | [B] MANUAL BRUSH\e[0m\n"
+
+printf "$msg"
+printf "[$cc]\n"
+printf " " >> $fname
+printf " " >> $fname
+printf " " >> $fname
 tput cup 3 0
 
 spix="█"
@@ -42,34 +42,34 @@ while true
 do
 	pixel=$spix
 	read -s -n1 ui
-	if [ "$ui" == "w" ] || [ "$ui" == "i" ]
+	if [ "$ui" == "w" ]
 	then
 		printf "\033[1A"
-		echo -en "\033[1A" >> $fname
-	elif [ "$ui" == "s" ] || [ "$ui" == "k" ]
+		printf "\033[1A" >> $fname
+	elif [ "$ui" == "s" ]
 	then
 		printf "\033[1B"
-		echo -en "\033[1B" >> $fname
-	elif [ "$ui" == "a" ] || [ "$ui" == "j" ]
+		printf "\033[1B" >> $fname
+	elif [ "$ui" == "a" ]
 	then
 		printf "\033[1D"
-		echo -en "\033[1D" >> $fname
-	elif [ "$ui" == "d" ] || [ "$ui" == "l" ]
+		printf "\033[1D" >> $fname
+	elif [ "$ui" == "d" ]
 	then
 		printf "\033[1C"
-		echo -en "\033[1C" >> $fname
-	elif [ "$ui" == "q" ]
+		printf "\033[1C" >> $fname
+	elif [ "$ui" == "" ]
 	then
-		echo -en "$pixel"
-		echo -en "$pixel" >> $fname
+		printf "$pixel"
+		printf "$pixel" >> $fname
 	elif [ "$ui" == "o" ]
 	then		
 		linesx=$(tput lines)
 		lines="$((linesx - 2))"
 		tput cup $lines 0		
 		tput cup $lines 0 >> $fname		
-		echo -en "\e[0m"
-		echo -en "File Name: "		
+		printf "\e[0m"
+		printf "File Name: "
 		read pfile
 		clear
 		clear >> $fname
@@ -77,10 +77,10 @@ do
 		cat $pfile > $fname
 		tput cup 0 0
 		tput cup 0 0 >> $fname
-		echo -e "\e[31m█\e[32m█\e[34m█\e[0m \e[1m[WASD] MOVE | [Q] DRAW | [O] OPEN | [V] SAVE | [X] QUIT | [B] BRUSH | [N] COLOR\e[0m"
-		echo -e "[$cc] [$sym]\n"
-		echo -e " " >> $fname
-		echo -e " " >> $fname
+		printf "$msg"
+		printf "[$cc]\n\n"
+		printf " \n" >> $fname
+		printf " \n" >> $fname
 		tput cup 3 0
 		tput cup 3 0 >> $fname
 		tput sc
@@ -91,10 +91,10 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: $col"
+		printf "\e[0mColor: $col"
 		tput rc
 		tput rc >> $fname
-	elif [ "$ui" == "v" ]
+	elif [ "$ui" == "i" ]
 	then			
 		if [ -f tempx ]
 		then					
@@ -104,8 +104,8 @@ do
 			lines="$((linesx - 2))"
 			tput cup $lines 0		
 			tput cup $lines 0 >> $fname
-			echo -en "\e[0m"
-			echo -en "File Name: "			
+			printf "\e[0m"
+			printf "File Name: "
 			read psfile
 			printf "\033[1A"
 			printf "\033[2K"
@@ -122,7 +122,7 @@ do
 			lines="$((linesx - 2))"
 			tput cup $lines $cols
 			tput cup $lines $cols >> $fname
-			echo -en "\e[0mColor: $col"
+			printf "\e[0mColor: $col"
 			tput rc
 			tput rc >> $fname
 		else		
@@ -133,8 +133,8 @@ do
 			lines="$((linesx - 2))"
 			tput cup $lines 0			
 			tput cup $lines 0 >> $fname			
-			echo -en "\e[0m"
-			echo -en "File Name: "
+			printf "\e[0m"
+			printf "File Name: "
 			read psfile
 			printf "\033[1A"
 			printf "\033[2K"
@@ -157,8 +157,8 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines 0		
 		tput cup $lines 0 >> $fname
-		echo -en "\e[0m"
-		echo -en "Brush: "			
+		printf "\e[0m"
+		printf "Brush: "
 		read brush
 		spix=$brush
 		printf "\033[1A"
@@ -166,8 +166,8 @@ do
 		tput rc
 		tput rc >> $fname
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m$brush\e[0m"
+		tput cup 1 1
+		printf "$brush"
 		sym="\e[0m$brush\e[0m"
 		tput rc
 		tput sc
@@ -178,10 +178,10 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: $col"
+		printf "\e[0mColor: $col"
 		tput rc
 		tput rc >> $fname
-	elif [ "$ui" == "n" ]
+	elif [ "$ui" == "c" ]
 	then
 		tput sc
 		tput sc >> $fname
@@ -189,8 +189,8 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines 0
 		tput cup $lines 0 >> $fname
-		echo -en "\e[0m"
-		echo -en "Color: "                      
+		printf "\e[0m"
+		printf "Color: "
 		read color
 		printf "\033[1A"
 		printf "\033[2K"
@@ -198,7 +198,7 @@ do
 		tput rc >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[38;5;${color}m█\e[0m"
+		printf "\e[38;5;${color}m█\e[0m"
 		cc="\e[38;5;${color}m█\e[0m"
 		tput rc
 		tput setaf $color
@@ -211,7 +211,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[38;5;${color}m${color}\e[0m"
+		printf "\e[0mColor: \e[38;5;${color}m${color}\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[38;5;${color}m${color}\e[0m"
@@ -223,8 +223,8 @@ do
 		tput setaf 1 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[31m█\e[0m"
-		cc="\e[31m█\e[0m"
+		printf "\e[31m$pixel\e[0m"
+		cc="\e[31m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -234,7 +234,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[31m1\e[0m"
+		printf "\e[0mColor: \e[31m1\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[31m1\e[0m"
@@ -245,8 +245,8 @@ do
 		tput setaf 2 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[32m█\e[0m"
-		cc="\e[32m█\e[0m"
+		printf "\e[32m$pixel\e[0m"
+		cc="\e[32m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -256,7 +256,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[32m2\e[0m"
+		printf "\e[0mColor: \e[32m2\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[31m2\e[0m"
@@ -267,8 +267,8 @@ do
 		tput setaf 3 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[33m█\e[0m"
-		cc="\e[33m█\e[0m"
+		printf "\e[33m$pixel\e[0m"
+		cc="\e[33m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -278,7 +278,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[33m3\e[0m"
+		printf "\e[0mColor: \e[33m3\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[33m3\e[0m"
@@ -289,8 +289,8 @@ do
 		tput setaf 4 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[34m█\e[0m"
-		cc="\e[34m█\e[0m"
+		printf "\e[34m$pixel\e[0m"
+		cc="\e[34m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -300,7 +300,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[34m4\e[0m"
+		printf "\e[0mColor: \e[34m4\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[34m4\e[0m"
@@ -311,8 +311,8 @@ do
 		tput setaf 5 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[35m█\e[0m"
-		cc="\e[35m█\e[0m"
+		printf "\e[35m$pixel\e[0m"
+		cc="\e[35m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -322,7 +322,7 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[35m5\e[0m"
+		printf "\e[0mColor: \e[35m5\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[34m5\e[0m"
@@ -333,8 +333,8 @@ do
 		tput setaf 6 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[36m█\e[0m"
-		cc="\e[36m█\e[0m"
+		printf "\e[36m$pixel\e[0m"
+		cc="\e[36m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -344,22 +344,31 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[36m6\e[0m"
+		printf "\e[0mColor: \e[36m6\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[36m6\e[0m"
-	elif [ "$ui" == "r" ]
+	elif [ "$ui" == "x" ]
 	then
-		echo -en " "
-		echo -en " " >> $fname
+		printf " "
+		printf " " >> $fname
+    elif [ "$ui" == "z" ]
+    then
+        clear
+        printf "$msg"
+        printf "[$cc]\n"
+        printf " " >> $fname
+        printf " " >> $fname
+        printf " " >> $fname
+        tput cup 3 0
 	elif [ "$ui" == '`' ]
 	then
 		tput sgr0
 		tput sgr0 >> $fname
 		tput sc
 		tput cup 1 1
-		echo -en "\e[0m█\e[0m"
-		cc="\e[0m█\e[0m"
+		printf "\e[0m$pixel\e[0m"
+		cc="\e[0m$pixel\e[0m"
 		tput rc
 		tput sc
 		tput sc >> $fname
@@ -369,11 +378,11 @@ do
 		lines="$((linesx - 2))"
 		tput cup $lines $cols
 		tput cup $lines $cols >> $fname
-		echo -en "\e[0mColor: \e[0m0\e[0m"
+		printf "\e[0mColor: \e[0m0\e[0m"
 		tput rc
 		tput rc >> $fname
 		col="\e[0m0\e[0m"
-	elif [ "$ui" == "x" ]
+	elif [ "$ui" == "q" ]
 	then
 		tput sgr0
 		tput sgr0 >> $fname
@@ -389,48 +398,48 @@ do
 	then
 		spix="░"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m░\e[0m"
+		tput cup 1 1
+		printf "░"
 		sym="\e[0m░\e[0m"
 		tput rc
 	elif [ "$ui" == "0" ]
 	then
 		spix="╱"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m╱\e[0m"
+		tput cup 1 1
+		printf "╱"
 		sym="\e[0m╱\e[0m"
 		tput rc
 	elif [ "$ui" == "9" ]
 	then
 		spix="╲"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m╲\e[0m"
+		tput cup 1 1
+		printf "╲"
 		sym="\e[0m╲\e[0m"
 		tput rc
 	elif [ "$ui" == "8" ]
 	then
 		spix="─"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m─\e[0m"
+		tput cup 1 1
+		printf "─"
 		sym="\e[0m─\e[0m"
 		tput rc
 	elif [ "$ui" == "7" ]
 	then
 		spix="│"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m│\e[0m"
+		tput cup 1 1
+		printf "│"
 		sym="\e[0m│\e[0m"
 		tput rc
 	elif [ "$ui" == "=" ]
 	then
 		spix="█"
 		tput sc
-		tput cup 1 5
-		echo -en "\e[0m█\e[0m"
+		tput cup 1 1
+		printf "█"
 		sym="\e[0m█\e[0m"
 		tput rc
 	fi
