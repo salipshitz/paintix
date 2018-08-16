@@ -170,6 +170,17 @@ do
 		echo -en "\e[0m$brush\e[0m"
 		sym="\e[0m$brush\e[0m"
 		tput rc
+		tput sc
+		tput sc >> $fname
+		linesx=$(tput lines)
+		colsx=$(tput cols)
+		cols=$((colsx - 10))
+		lines="$((linesx - 2))"
+		tput cup $lines $cols
+		tput cup $lines $cols >> $fname
+		echo -en "\e[0mColor: $col"
+		tput rc
+		tput rc >> $fname
 	elif [ "$ui" == "n" ]
 	then
 		tput sc
